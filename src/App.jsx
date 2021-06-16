@@ -1,15 +1,20 @@
 import { useEffect, useState } from 'react'
 
 import MainDetail from './components/MainDetail'
+import NewsCard from './components/NewsCard'
 
 import SideListItem from './components/SideListItem'
 import { getCripto, getNewsList } from './constants'
 
 function App() {
 	// This piece of state keeps the id from the selected coin to be displayed in the MainDetail component
-	const [selectedCripto, setSelectedCripto] = useState(null)
+	const [selectedCriptoId, setSelectedCripto] = useState(null)
 	const [criptoList, setCriptoList] = useState([])
 	const [newsList, setNewsList] = useState([])
+
+	const selectedCriptoItem = criptoList.find(
+		item => item.id === selectedCriptoId
+	)
 
 	useEffect(() => {
 		getCripto().then(setCriptoList)
@@ -21,7 +26,7 @@ function App() {
 	// This function gives you whether a coin has been selected or not
 	// You will need this for the SideListItem component
 	function isSelectedCripto(id) {
-		return selectedCripto === id
+		return selectedCriptoId === id
 	}
 
 	return (
@@ -40,11 +45,18 @@ function App() {
 				</ul>
 			</aside>
 			<main className="main-detail">
-				{selectedCripto ? <MainDetail /> : 'Select a coin bro!'}
+				{selectedCriptoId ? (
+					<MainDetail selectedCriptoItem={selectedCriptoItem} />
+				) : (
+					'Select a coin bro!'
+				)}
 				{/* News feed component needs to go here */}
+				{/* <NewsCard /> */}
 			</main>
 		</>
 	)
 }
 
 export default App
+
+//question why on sidelistitem if you setSelectedCripto it says it is not a function?

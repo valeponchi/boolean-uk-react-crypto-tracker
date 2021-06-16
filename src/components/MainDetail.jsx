@@ -16,17 +16,27 @@ function convertToSeconds(dateValue) {
 		: dateValue
 }
 
-function MainDetail() {
+function MainDetail({ selectedCriptoItem }) {
+	const { name, symbol, last_updated, current_price } = selectedCriptoItem
 	return (
-		<>
-			<section className="main-detail__central">
-				<div className="main-detail__update">
-					{/* This part is for the challenge */}
-				</div>
-				<div className="main-detail__name"></div>
-				<div className="main-detail__price"></div>
-			</section>
-		</>
+		<section className="main-detail__central">
+			<div className="main-detail__update">
+				{/* This part is for the challenge */}
+			</div>
+
+			<div className="main-detail__name">
+				<h2>{name}</h2>
+				<p>
+					<span className="small">a.k.a </span>
+					{symbol}
+				</p>
+			</div>
+
+			<div className="main-detail__price">
+				<p>{current_price}</p>
+				<p>{last_updated}</p>
+			</div>
+		</section>
 	)
 }
 export default MainDetail

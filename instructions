@@ -9,8 +9,8 @@ Instructions
 - You will find a file called constants.js with all the URLs for your fetches. You just need to import them where needed
 - Make sure to check what are the responses from these fetches
 - Display the Side List with each one of the coins
-    - You will have to use a fetch to the CRIPTO_LIST URL
-    - Use the SideListItem component to display each individual item
+    - ✅You will have to use a fetch to the CRIPTO_LIST URL
+    - ✅Use the SideListItem component to display each individual item
     - When you click on a coin, you should display its info in the Main Section
 - Display the Main Section
     - You should display here the info of the selected coin from the Side List
