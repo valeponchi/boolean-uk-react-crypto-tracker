@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 
 import MainDetail from './components/MainDetail'
 import NewsCard from './components/NewsCard'
+import NewsFeed from './components/NewsFeed'
 
 import SideListItem from './components/SideListItem'
 import { getCripto, getNewsList } from './constants'
@@ -50,7 +51,9 @@ function App() {
 				) : (
 					'Select a coin bro!'
 				)}
-				{/* News feed component needs to go here */}
+				<NewsFeed newsList={newsList} />
+
+				{/* <NewsCard newsList={newsList} /> */}
 				{/* <NewsCard /> */}
 			</main>
 		</>

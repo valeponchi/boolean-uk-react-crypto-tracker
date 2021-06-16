@@ -4,6 +4,11 @@
 	box-sizing: border-box;
 }
 
+html {
+	--primary-color: rgb(23, 165, 165);
+	--primary-second: rgb(128, 0, 107);
+}
+
 li {
 	list-style: none;
 }
@@ -24,12 +29,12 @@ body {
 }
 
 button {
-	border: 1px solid grey;
+	border: 1px solid var(--primary-second);
 	padding: 0.5rem;
 }
 
 button:hover {
-	background-color: grey;
+	background-color: var(--primary-second);
 	color: white;
 }
 
@@ -54,7 +59,7 @@ button:hover {
 }
 
 .side-list button.selected {
-	background-color: rgb(23, 165, 165);
+	background-color: var(--primary-color);
 }
 
 .main-detail {
