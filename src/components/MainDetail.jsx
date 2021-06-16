@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { getCriptoUpdateUrl } from '../constants'
 
 // This function give us the current time in seconds
-function currentTime() {
+function getCurrentTime() {
 	return Math.round(Date.now() / 1000)
 }
 
@@ -18,6 +18,15 @@ function convertToSeconds(dateValue) {
 
 function MainDetail({ selectedCriptoItem }) {
 	const { name, symbol, last_updated, current_price } = selectedCriptoItem
+	const [currentTime, setCurrentTime] = useState(getCurrentTime())
+
+	const updatedTimeAgo = currentTime - convertToSeconds(last_updated)
+
+	useEffect(() => {
+		const intervalId = setInterval(() => setCurrentTime(getCurrentTime()), 1000)
+		return () => clearInterval(intervalId)
+	}, [])
+
 	return (
 		<section className="main-detail__central">
 			<div className="main-detail__update">
@@ -34,7 +43,7 @@ function MainDetail({ selectedCriptoItem }) {
 
 			<div className="main-detail__price">
 				<p>{current_price}</p>
-				<p>{last_updated}</p>
+				<p>Updated {updatedTimeAgo} seconds ago</p>
 			</div>
 		</section>
 	)
